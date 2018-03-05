@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
@@ -25,11 +26,26 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+
+        //If user inputs name
+        EditText etName = (EditText) findViewById(R.id.person_name);
+        TextView tvName = (TextView) findViewById(R.id.order_summary_text_view);
+        String hasName = etName.getText().toString();
+        tvName.setText(hasName);
+
+        //If user wants whipped cream topping
         CheckBox whippedCream = (CheckBox) findViewById(R.id.whipped_cream);
         boolean hasWhippedCream = whippedCream.isChecked();
 
+        //If user wants chocolate topping
+        CheckBox chocolate = (CheckBox) findViewById(R.id.chocolate);
+        boolean hasChocolate = chocolate.isChecked();
+
+        //Calculates price
         int price = calculatePrice();
-        displayMessage(createOrderSummary(price, hasWhippedCream));
+
+        //Displays order summary on screen
+        displayMessage(createOrderSummary(hasName, price, hasWhippedCream, hasChocolate));
     }
 
     /**
@@ -41,14 +57,17 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Create summary of the order.
-     * @param hasWhippedCream is whether or not the use wants whipped cream topping
-     * @param price of the order
+     * @param hasName is the user's name
+     * @param hasWhippedCream is whether or not the user wants whipped cream topping
+     * @param hasChocolate    is whether or not the user wants chocolate topping
+     * @param price           of the order
      * @return text summary
      */
 
-    private String createOrderSummary(int price, boolean hasWhippedCream) {
-        String priceMessage = "Name: Kaptain Kunal";
+    private String createOrderSummary(String hasName, int price, boolean hasWhippedCream, boolean hasChocolate) {
+        String priceMessage = "Name: " + hasName;
         priceMessage += "\nAdd whipped cream? " + hasWhippedCream;
+        priceMessage += "\nAdd chocolate? " + hasChocolate;
         priceMessage += "\nQuantity: " + quantity;
         priceMessage += "\nTotal: $" + price;
         priceMessage += "\nThank you!";
