@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     public void submitOrder(View view) {
 
         //If user inputs name
-        EditText nameField = (EditText) findViewById(R.id.person_name);
+        EditText nameField = findViewById(R.id.person_name);
         String hasName = nameField.getText().toString();
 
         //If user wants whipped cream topping
@@ -117,9 +117,8 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
             return;
         }
-            quantity--;    //(same thing as quantity = quantity - 1;)
-            displayQuantity(quantity);
-        }
+        displayQuantity(--quantity); //decrement quantity, then display
+    }
 
 
     /**
