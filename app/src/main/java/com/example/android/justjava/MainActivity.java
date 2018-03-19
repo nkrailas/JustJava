@@ -33,11 +33,11 @@ public class MainActivity extends AppCompatActivity {
         String hasName = nameField.getText().toString();
 
         //If user wants whipped cream topping
-        CheckBox whippedCream = (CheckBox) findViewById(R.id.whipped_cream);
+        CheckBox whippedCream = findViewById(R.id.whipped_cream);
         boolean hasWhippedCream = whippedCream.isChecked();
 
         //If user wants chocolate topping
-        CheckBox chocolate = (CheckBox) findViewById(R.id.chocolate);
+        CheckBox chocolate = findViewById(R.id.chocolate);
         boolean hasChocolate = chocolate.isChecked();
 
         //Calculates price
@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
             return;
         }
-        quantity = quantity + 1;
+        quantity += 1;
         displayQuantity(quantity);
     }
 
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the minus button is clicked.
      */
     public void decrement(View view) {
-        if (quantity == 1) {
+        if (quantity <= 1) {
             //Display toast when quantity is under 1
             Toast.makeText(this, "You cannot order less than 1 coffee.",
                     Toast.LENGTH_SHORT).show();
@@ -125,15 +125,15 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the given quantity value on the screen.
      */
     private void displayQuantity(int number) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
-        quantityTextView.setText("" + number);
+        TextView quantityTextView = findViewById(R.id.quantity_text_view);
+        quantityTextView.setText(String.valueOf(number));
     }
 
     /**
      * This method displays the given text on the screen.
      */
     private void displayMessage(String message) {
-        TextView orderSummaryTextView = (TextView) findViewById(R.id.order_summary_text_view);
+        TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
         orderSummaryTextView.setText(message);
     }
 }

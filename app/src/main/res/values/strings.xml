@@ -14,4 +14,6 @@
     <string name="_0">0</string>
     <string name="order">Order</string>
     <string name="scroll_down">Please scroll down!</string>
+    <string name="minus_sign">-</string>
+    <string name="plus_sign">+</string>
 </resources>
